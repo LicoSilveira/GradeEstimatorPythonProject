@@ -1,15 +1,6 @@
 # Define initial names
-first_name = "Licurgo"
-last_name = "Teixeira"
-
-# Remove extra spaces and format the names properly
-first_name = first_name.strip().capitalize()
-last_name = last_name.strip().capitalize()
-
-# Prompt the user for their first and last name
-# If user input is not needed, you can keep the values above
-first_name = input("first_name: ").strip().capitalize()
-last_name = input("last_name: ").strip().capitalize()
+first_name = {"Licurgo"}
+last_name = {"Teixeira"}
 
 # Display the formatted name with a greeting
 print(f"Hello {last_name}, {first_name}")
