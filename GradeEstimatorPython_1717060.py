@@ -1,108 +1,63 @@
-# Define initial names
-first_name = {"Licurgo"}
-last_name = {"Teixeira"}
+# Define student name
+first_name = "Licurgo"
+last_name = "Teixeira"
 
 # Display the formatted name with a greeting
 print(f"Hello {last_name}, {first_name}")
 
-# Variables for the points in Unit 1 activities
-Unit1_discussion_points = 50  # Points earned in the discussion
-Unit1_course_project_points = 50  # Points earned in the course project
-Unit1_core_assessment_points = 40  # Points earned in the core assessment
-task_maximum_points = 50  # Maximum points for each task
+# Define the structure for storing scores using lists
+units = ["Unit1", "Unit2", "Unit3", "Unit4"]
+discussion_points = [50, 50, 50, 0]  # Unit 4 yet to be completed
+course_project_points = [40, 50, 40, 0]
+assignment_points = [50, 0, 50, 0]
 
-# Calculate the total points earned
-total_points = (
-    Unit1_discussion_points +
-    Unit1_course_project_points +
-    Unit1_core_assessment_points
-)
+# Maximum points for each category
+task_maximum_points = 50
+discussions_max = 400
+course_projects_max = 400
+assignments_max = 200
 
-# Display the total points
-print(f"Total Points: {total_points}")
+def display_unit_scores(unit_index):
+    """Display total and average points for a given unit."""
+    unit = units[unit_index]
+    total = discussion_points[unit_index] + course_project_points[unit_index] + assignment_points[unit_index]
+    average = total / 3  # Since each unit has 3 categories
+    print(f"{unit} Total Points: {total}")
+    print(f"{unit} Average Points: {average:.2f}")
+    print(f"Got maximum points for {unit} discussion? {discussion_points[unit_index] == task_maximum_points}")
+    print(f"Got maximum points for {unit} course project? {course_project_points[unit_index] == task_maximum_points}")
+    print(f"Got maximum points for {unit} assignment? {assignment_points[unit_index] == task_maximum_points}")
+    print("-" * 40)
 
-# Calculate the average points for Unit 1 activities
-average_points = total_points / 3
+# Display scores for each completed unit
+for i in range(3):  # Unit 4 is not yet completed
+    display_unit_scores(i)
 
-# Display the average points
-print(f"Average Points for Unit 1: {average_points}")
+# Function to calculate total and average points for each category
+def get_total_points_by_category(category, points_list, max_points):
+    total_points = sum(points_list)
+    average_points = total_points / len(points_list)
+    print(f"Total Points for {category}: {total_points} out of {max_points}")
+    print(f"Average Points for {category}: {average_points:.2f}")
+    print("-" * 40)
 
-# Check and display if the maximum points were achieved for each task
-print(f"Got maximum points for Unit 1 discussion? {Unit1_discussion_points == task_maximum_points}")
-print(f"Got maximum points for Unit 1 course project? {Unit1_course_project_points == task_maximum_points}")
-print(f"Got maximum points for Unit 1 core assessment? {Unit1_core_assessment_points == task_maximum_points}")
+# Display category-based performance
+get_total_points_by_category("Discussion", discussion_points, discussions_max)
+get_total_points_by_category("Course Project", course_project_points, course_projects_max)
+get_total_points_by_category("Assignment", assignment_points, assignments_max)
 
-# Creating Dictionary with Unit Grades
-unit_grades = {
-    "Unit1": {
-        "discussion_points": 50,
-        "course_project_points": 40,
-        "assignment_points": 50,
-        },
-    "Unit2": {
-        "discussion_points": 50,
-        "course_project_points": 50,
-        "assignment_points": 00,
-        },
-    "Unit3": {
-        "discussion_points": 50,
-        "course_project_points": 50,
-        "assignment_points": 50,
-        },
-}
-
-task_maximum_points = 50  # Maximum points for each task
-
-# Calculate the total points earned for each unit
-def calculate_unit_scores(unit):
-    if unit in unit_grades:
-        discussion = unit_grades[unit]["discussion_points"]
-        project = unit_grades[unit]["course_project_points"]
-        assignment = unit_grades[unit].get("assignment_points", 00)  # Default to 00 if not present
-        
-        total_points = discussion + project + assignment
-        average_points = total_points / 3
-        
-        print(f"{unit} Total Points: {total_points}")
-        print(f"{unit} Average Points: {average_points:.2f}")
-        
-        print(f"Got maximum points for {unit} discussion? {discussion == task_maximum_points}")
-        print(f"Got maximum points for {unit} course project? {project == task_maximum_points}")
-        print(f"Got maximum points for {unit} assignment? {assignment == task_maximum_points}")
+# Check if maximum points were achieved per category
+def check_maximum_points(grades, category_name):
+    if all(grade == task_maximum_points for grade in grades if grade > 0):
+        print(f"Congrats! You got maximum points for ALL {category_name} so far!")
     else:
-        print(f"{unit} not found in records.")
+        print(f"Unfortunately, you did not get maximum points for ALL {category_name}.")
+    print("-" * 40)
 
-# Example queries
-calculate_unit_scores("Unit1")
-calculate_unit_scores("Unit2")
-calculate_unit_scores("Unit3")
+check_maximum_points(discussion_points, "Discussions")
+check_maximum_points(course_project_points, "Course Projects")
+check_maximum_points(assignment_points, "Assignments")
 
-# Dictionary storing points for each category and unit
-grades = {
-    "Discussion": {"Unit1": 50, "Unit2": 50, "Unit3": 50},  
-    "Course Project": {"Unit1": 40, "Unit2": 50, "Unit3": 50},  
-    "Assignment": {"Unit1": 50, "Unit2": 00, "Unit3": 50}  
-}
-
-# Function to calculate total and average points for a given category
-def get_total_points_by_category(category):
-    if category in grades:
-        total_points = sum(grades[category].values())  # Sum points for all units
-        num_units = len(grades[category])  # Count number of units
-        average_points = total_points / num_units  # Calculate average
-        print(f"Total Points for {category}: {total_points}")
-        print(f"Average Points for {category}: {average_points:.2f}")
-    else:
-        print(f"Category '{category}' not found.")
-
-# Example Queries - Getting Points Information
-get_total_points_by_category("Discussion")
-get_total_points_by_category("Course Project")
-get_total_points_by_category("Assignment")
-
-# Checking if maximum points were achieved for each category
-for category, units in grades.items():
-    for unit, points in units.items():
-        max_reached = points == task_maximum_points
-        print(f"Got maximum points for {category} in {unit}? {max_reached}")
-
+# Prepare Unit 4 for input (Placeholder for future updates)
+print("Prepare to input scores for Unit 4!")
+# End of the script so far
