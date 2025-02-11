@@ -1,0 +1,22 @@
+{
+    "assignments": [
+        {
+            "name": "Discussions",
+            "display_name": "Group Discussions",
+            "num_tasks": 8,
+            "max_points": 50
+        },
+        {
+            "name": "Course Projects",
+            "display_name": "Course Project",
+            "num_tasks": 8,
+            "max_points": 50
+        },
+        {
+            "name": "Core Assessments",
+            "display_name": "Final Assessments",
+            "num_tasks": 4,
+            "max_points": 50
+        }
+    ]
+}
