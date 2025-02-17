@@ -1,0 +1,192 @@
+# Define student name
+first_name = "Licurgo"
+last_name = "Teixeira"
+
+# Display the formatted name with a greeting
+print(f"Hello {last_name}, {first_name}")
+
+#Points earned for unit 1 discussion
+Unit1_discussion_points = 50 #full points for unit 1 discussion
+
+#Points earned for unit 1 course project
+Unit1_course_project_points = 40 #full points for unit 1 discussion
+
+#Points earned for unit 1 core assessment
+Unit1_core_assessment_points = 50 #full points for unit 1 discussion
+
+#Maximum points for each task
+task_maximum_points = 50
+
+#Calculate total points for unit 1
+total_points_unit1 = (Unit1_discussion_points + 
+                      Unit1_course_project_points + 
+                      Unit1_core_assessment_points)
+
+#Display total points for unit 1
+print(f"Unit 1 Total Points: {total_points_unit1}")
+
+#Check if maximum points were achieved for each task
+print(f"Got maximum points for Unit 1 discussion? {Unit1_discussion_points == task_maximum_points}")
+print(f"Got maximum points for Unit 1 course project? {Unit1_course_project_points == task_maximum_points}")
+print(f"Got maximum points for Unit 1 core assessment? {Unit1_core_assessment_points == task_maximum_points}")
+
+#Unit 2 points earned
+Unit2_discussion_points = 50 #full points for unit 2 discussion
+Unit2_course_project_points = 50 #full points for unit 2 course project
+Unit2_core_assessment_points = 0 #full points for unit 2 core assessment
+
+#Calculate total points for unit 2
+total_points_unit2 = (Unit2_discussion_points + 
+                      Unit2_course_project_points + 
+                      Unit2_core_assessment_points)
+
+#Display total points for unit 2
+print(f"Unit 2 Total Points: {total_points_unit2}")
+
+#Check if maximum points were achieved for each task
+print(f"Got maximum points for Unit 2 discussion? {Unit2_discussion_points == task_maximum_points}")
+print(f"Got maximum points for Unit 2 course project? {Unit2_course_project_points == task_maximum_points}")
+print(f"Got maximum points for Unit 2 core assessment? {Unit2_core_assessment_points == task_maximum_points}")
+
+#Unit 3 points earned
+Unit3_discussion_points = 50 #full points for unit 3 discussion
+Unit3_course_project_points = 40 #full points for unit 3 course project
+Unit3_core_assessment_points = 50 #full points for unit 3 core assessment
+
+#Calculate total points for unit 3
+total_points_unit3 = (Unit3_discussion_points + 
+                      Unit3_course_project_points + 
+                      Unit3_core_assessment_points)
+
+#Display total points for unit 3
+print(f"Unit 3 Total Points: {total_points_unit3}")
+
+#Check if maximum points were achieved for each task
+print(f"Got maximum points for Unit 3 discussion? {Unit3_discussion_points == task_maximum_points}")
+print(f"Got maximum points for Unit 3 course project? {Unit3_course_project_points == task_maximum_points}")
+print(f"Got maximum points for Unit 3 core assessment? {Unit3_core_assessment_points == task_maximum_points}")
+
+#Unit 4 points earned
+Unit4_discussion_points = 50 #full points for unit 4 discussion
+Unit4_course_project_points = 35 #full points for unit 4 course project
+Unit4_core_assessment_points = 0 #full points for unit 4 core assessment
+
+#Calculate total points for unit 4
+total_points_unit4 = (Unit4_discussion_points + 
+                      Unit4_course_project_points + 
+                      Unit4_core_assessment_points)
+
+#Display total points for unit 4
+print(f"Unit 4 Total Points: {total_points_unit4}")
+
+#Check if maximum points were achieved for each task
+print(f"Got maximum points for Unit 4 discussion? {Unit4_discussion_points == task_maximum_points}")
+print(f"Got maximum points for Unit 4 course project? {Unit4_course_project_points == task_maximum_points}")
+print(f"Got maximum points for Unit 4 core assessment? {Unit4_core_assessment_points == task_maximum_points}")
+
+#Lists to store points earned for each assignment
+total_discussion_points = [Unit1_discussion_points, Unit2_discussion_points, Unit3_discussion_points, Unit4_discussion_points]
+total_course_project_points = [Unit1_course_project_points, Unit2_course_project_points, Unit3_course_project_points, Unit4_course_project_points]
+total_core_assessment_points = [Unit1_core_assessment_points, Unit3_core_assessment_points]
+
+#Class definitions for Assignments and Grades
+class Discussion:
+    maximum_points_per_task = 50
+    tasks_per_course = 8
+    display_name = "Discussion"
+
+class CourseProject:
+    maximum_points_per_task = 50
+    tasks_per_course = 8
+    display_name = "Course Project"
+
+class CoreAssessment:
+    maximum_points_per_task = 50
+    tasks_per_course = 4
+    display_name = "Core Assessment"
+
+#Function to calculate if maximum points were achieved in all tasks
+def check_maximum_points(points, max_points, category_name):
+    if all(points == task_maximum_points for points in points if points > 0):
+        print(f"Congrats! You got maximum points for ALL {category_name} so far!")
+    else:
+        print(f"Unfortunately, you did not get maximum points for ALL {category_name}.")
+    print("-" * 40)
+
+#Check if maximum points were achieved for each category
+sum_discussion_points = sum(total_discussion_points)
+sum_course_project_points = sum(total_course_project_points)
+sum_core_assessment_points = sum(total_core_assessment_points)
+
+#Calculate maximum possible points using class attributes
+max_discussion_points = Discussion.maximum_points_per_task * Discussion.tasks_per_course
+max_course_project_points = CourseProject.maximum_points_per_task * CourseProject.tasks_per_course
+max_core_assessment_points = CoreAssessment.maximum_points_per_task * CoreAssessment.tasks_per_course
+
+#Print total points for each category
+print ("Currently you have {} points for discussions out of {} possible points".format(sum_discussion_points, max_discussion_points))
+print ("Currently you have {} points for course projects out of {} possible points".format(sum_course_project_points, max_course_project_points))
+print ("Currently you have {} points for core assessments out of {} possible points".format(sum_core_assessment_points, max_core_assessment_points))
+
+#Check if maximum points were achieved for each category
+check_maximum_points(total_discussion_points, task_maximum_points, Discussion.display_name)
+check_maximum_points(total_course_project_points, task_maximum_points, CourseProject.display_name)
+check_maximum_points(total_core_assessment_points, task_maximum_points, CoreAssessment.display_name)
+
+import json  # Import JSON module to read the file
+
+# Define the TaskType class
+class TaskType:
+    def __init__(self, name, display_name, num_tasks, max_points):
+        """
+        Constructor for the TaskType class.
+        Initializes attributes with provided values.
+        """
+        self.name = name  # Internal task name
+        self.display_name = display_name  # Display name of the task
+        self.num_tasks = num_tasks  # Number of times the task occurs per semester
+        self.max_points = max_points  # Maximum points per task
+
+# Path to the JSON file containing task data
+json_file_path = "assignments.json"
+
+# Try to open and load the JSON file
+try:
+    with open(json_file_path, "r", encoding="utf-8") as file:
+        data = json.load(file)  # Load JSON data
+        assignments_data = data.get("assignments", [])  # Extract the list of assignments
+except FileNotFoundError:
+    print(f"Error: The file {json_file_path} was not found.")  # Handle missing file
+    assignments_data = []  # Set an empty list to avoid errors
+except json.JSONDecodeError:
+    print(f"Error: The file {json_file_path} contains invalid JSON.")  # Handle malformed JSON
+    assignments_data = []
+
+# List to store TaskType objects
+task_types = []
+
+# Ensure that the loaded data is a list before iterating
+if isinstance(assignments_data, list):
+    for assignment in assignments_data:
+        if isinstance(assignment, dict):  # Check if each item is a dictionary
+            # Create a TaskType object using values from the JSON
+            task_type = TaskType(
+                assignment.get("name", "Unknown"),  # Task name
+                assignment.get("display_name", "Unknown"),  # Display name
+                assignment.get("num_tasks", 0),  # Number of tasks per semester
+                assignment.get("max_points", 0)  # Maximum points per task
+            )
+            # Add the object to the task_types list
+            task_types.append(task_type)
+else:
+    print("Error: `assignments_data` is not a valid list.")  # Error message if JSON format is incorrect
+
+# Calculate the total maximum points a student can earn
+total_maximum_points = sum(task.num_tasks * task.max_points for task in task_types)
+
+# Display the final result
+print(f"Maximum grade you can get for this class is: {total_maximum_points}")
+
+# Optionally, display details of each task
+for task in task_types:
+    print(f"Task: {task.display_name}, Max Points per Semester: {task.num_tasks * task.max_points}")
